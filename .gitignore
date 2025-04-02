@@ -1,0 +1,8 @@
+.archived
+.debug
+.materials
+.venv
+.env
+docs
+src
+memo.md

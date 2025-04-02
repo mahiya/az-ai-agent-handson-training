@@ -1,0 +1,20 @@
+{
+    "name": "sample-indexer",
+    "dataSourceName": "sample-datasource",
+    "skillsetName": "sample-skillset",
+    "targetIndexName": "sample-index",
+    "parameters": {
+        "configuration": {
+            "parsingMode": "default",
+            "dataToExtract": "contentAndMetadata",
+            "allowSkillsetToReadFileData": true
+        }
+    },
+    "fieldMappings": [
+        {
+            "sourceFieldName": "metadata_storage_name",
+            "targetFieldName": "documentName"
+        }
+    ],
+    "outputFieldMappings": []
+}

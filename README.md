@@ -1,0 +1,1 @@
+# Azure AI Search x Agent Service Hands-on Training
