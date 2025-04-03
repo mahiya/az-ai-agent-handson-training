@@ -1,11 +1,11 @@
 __pycache__
 .venv
 .env
+.azure
 src/.output
 
 # For Development
 .archived
 .debug
 .materials
-src/deploy.sh
 memo.md
