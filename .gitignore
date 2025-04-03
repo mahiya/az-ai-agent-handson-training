@@ -3,6 +3,6 @@
 .materials
 .venv
 .env
-docs
 src
+src/.resps
 memo.md
