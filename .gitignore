@@ -1,8 +1,11 @@
+# Basic Python ignore files
+__pycache__
+.venv
+.env
+
+# For Development
 .archived
 .debug
 .materials
-.venv
-.env
-src
-src/.resps
+src/.output
 memo.md

@@ -1,0 +1,10 @@
+"Optimizing vector storage approach","Dimentions","Bit","Vector Size"
+"Baseline",3072,32,42.06
+"Using Collection(Edm.Half)",3072,16,21.12
+"Scalar Quantization",3072,8,10.77
+"Scalar Quantization with Rescore",3072,8,16.09
+"Scalar Quantization with Rescore",1024,8,3.7
+"Binary Quantization",3072,1,1.5
+"Binary Quantization with Rescore",3072,1,1.51
+"Binary Quantization with Rescore",1024,1,0.63
+"Binary Quantization with Rescore",256,1,0.63
