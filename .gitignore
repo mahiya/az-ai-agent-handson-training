@@ -1,11 +1,11 @@
-# Basic Python ignore files
 __pycache__
 .venv
 .env
+src/.output
 
 # For Development
 .archived
 .debug
 .materials
-src/.output
+src/deploy.sh
 memo.md
