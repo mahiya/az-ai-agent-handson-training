@@ -15,8 +15,8 @@ OUTPUT_DIR = ".output/3.code_interpreter"
 
 # Create Azure AI Agent Service client
 project = AIProjectClient.from_connection_string(
-    credential=DefaultAzureCredential(),
     conn_str=PROJECT_CONNECTION_STRING,
+    credential=DefaultAzureCredential(),
 )
 
 # Define tools for the agent
