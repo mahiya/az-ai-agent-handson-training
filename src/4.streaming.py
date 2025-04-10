@@ -30,7 +30,7 @@ toolset.add(ai_search)
 # Create an agent
 agent = project.agents.create_agent(
     model=OPENAI_CHAT_DEPLOY_NAME,
-    name="rag-agent",
+    name="streaming-agent",
     instructions="""
     - Please respond to user inquiries.
     - For questions related to Azure AI Search, search the connected Azure AI Search index for relevant documents and provide answers based on those documents.

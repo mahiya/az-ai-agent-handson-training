@@ -27,10 +27,10 @@ toolset.add(code_interpreter)
 # Create an agent
 agent = project.agents.create_agent(
     model=OPENAI_CHAT_DEPLOY_NAME,
-    name="rag-agent",
+    name="code-interpreter-agent",
     instructions="""
-    - Please respond to user inquiries.
-    - Please use the Code Interpreter to handle the processing of user-uploaded files, perform numerical calculations, and generate graphs.
+- Please respond to user inquiries.
+- Please use the Code Interpreter to handle the processing of user-uploaded files, perform numerical calculations, and generate graphs.
     """,
     toolset=toolset,
 )
