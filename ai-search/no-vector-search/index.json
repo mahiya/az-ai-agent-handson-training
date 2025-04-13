@@ -1,0 +1,96 @@
+{
+    "name": "sample-index",
+    "fields": [
+        {
+            "name": "id",
+            "type": "Edm.String",
+            "key": true,
+            "searchable": true,
+            "filterable": false,
+            "sortable": true,
+            "facetable": false,
+            "analyzer": "keyword"
+        },
+        {
+            "name": "parentId",
+            "type": "Edm.String",
+            "key": false,
+            "searchable": false,
+            "filterable": true,
+            "sortable": false,
+            "facetable": false
+        },
+        {
+            "name": "documentName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+        },
+        {
+            "name": "chunk",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false,
+            "analyzer": "en.microsoft"
+        },
+        {
+            "name": "chapter",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+        },
+        {
+            "name": "section",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+        },
+        {
+            "name": "subsection",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "sortable": false,
+            "facetable": false
+        }
+    ],
+    "semantic": {
+        "defaultConfiguration": "semanticConfig",
+        "configurations": [
+            {
+                "name": "semanticConfig",
+                "prioritizedFields": {
+                    "titleField": {
+                        "fieldName": "chapter"
+                    },
+                    "prioritizedContentFields": [
+                        {
+                            "fieldName": "chunk"
+                        }
+                    ],
+                    "prioritizedKeywordsFields": [
+                        {
+                            "fieldName": "section"
+                        },
+                        {
+                            "fieldName": "subsection"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "similarity": {
+        "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
+        "k1": 1.2,
+        "b": 0.75
+    }
+}

@@ -1,0 +1,81 @@
+{
+    "name": "sample-skillset",
+    "skills": [
+        {
+            "@odata.type": "#Microsoft.Skills.Util.DocumentIntelligenceLayoutSkill",
+            "context": "/document",
+            "outputMode": "oneToMany",
+            "markdownHeaderDepth": "h3",
+            "inputs": [
+                {
+                    "name": "file_data",
+                    "source": "/document/file_data"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "markdown_document",
+                    "targetName": "markdown_document"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+            "context": "/document/markdown_document/*",
+            "textSplitMode": "pages",
+            "maximumPageLength": 1024,
+            "pageOverlapLength": 256,
+            "defaultLanguageCode": "en",
+            "unit": "azureOpenAITokens",
+            "azureOpenAITokenizerParameters": {
+                "encoderModelName": "cl100k_base"
+            },
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/markdown_document/*/content"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "textItems",
+                    "targetName": "pages"
+                }
+            ]
+        }
+    ],
+    "indexProjections": {
+        "selectors": [
+            {
+                "targetIndexName": "sample-index",
+                "parentKeyFieldName": "parentId",
+                "sourceContext": "/document/markdown_document/*/pages/*",
+                "mappings": [
+                    {
+                        "name": "documentName",
+                        "source": "/document/metadata_storage_name"
+                    },
+                    {
+                        "name": "chunk",
+                        "source": "/document/markdown_document/*/pages/*"
+                    },
+                    {
+                        "name": "chapter",
+                        "source": "/document/markdown_document/*/sections/h1"
+                    },
+                    {
+                        "name": "section",
+                        "source": "/document/markdown_document/*/sections/h2"
+                    },
+                    {
+                        "name": "subsection",
+                        "source": "/document/markdown_document/*/sections/h3"
+                    }
+                ]
+            }
+        ],
+        "parameters": {
+            "projectionMode": "skipIndexingParentDocuments"
+        }
+    }
+}
