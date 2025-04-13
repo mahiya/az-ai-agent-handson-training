@@ -13,14 +13,14 @@ from utils.chat_manager import InMemoryChatManager, AgentChat
 
 # Load environment variables from .env file
 load_dotenv()
-PROJECT_CONNECTION_STRING = os.getenv("PROJECT_CONNECTION_STRING")
-OPENAI_CHAT_DEPLOY_NAME = os.getenv("OPENAI_CHAT_DEPLOY_NAME")
+AZURE_AI_AGENT_PROJECT_CONNECTION_STRING = os.getenv("AZURE_AI_AGENT_PROJECT_CONNECTION_STRING")
+AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME = os.getenv("AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME")
 AI_SEARCH_INDEX_NAME = os.getenv("AI_SEARCH_INDEX_NAME")
 AI_SEARCH_CONNECTION_NAME = os.getenv("AI_SEARCH_CONNECTION_NAME")
 
 # Settings about Azure AI Agent Service (instructions and toolset)
 project = AIProjectClient.from_connection_string(
-    conn_str=PROJECT_CONNECTION_STRING,
+    conn_str=AZURE_AI_AGENT_PROJECT_CONNECTION_STRING,
     credential=DefaultAzureCredential(),
 )
 instructions = """
@@ -98,7 +98,7 @@ def create_chat_api():
 
     # Create Agent and Thread in Azure AI Agent Service
     agent = project.agents.create_agent(
-        model=OPENAI_CHAT_DEPLOY_NAME,
+        model=AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME,
         name=f'agent{datetime.now().strftime("%Y%m%d%H%M%S")}',
         instructions=instructions,
         toolset=toolset,

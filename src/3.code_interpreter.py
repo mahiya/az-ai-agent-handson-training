@@ -7,15 +7,15 @@ from utils.io import write_json
 
 # Load environment variables from .env file
 load_dotenv()
-PROJECT_CONNECTION_STRING = os.getenv("PROJECT_CONNECTION_STRING")
-OPENAI_CHAT_DEPLOY_NAME = os.getenv("OPENAI_CHAT_DEPLOY_NAME")
+AZURE_AI_AGENT_PROJECT_CONNECTION_STRING = os.getenv("AZURE_AI_AGENT_PROJECT_CONNECTION_STRING")
+AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME = os.getenv("AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME")
 
 # Define constants
 OUTPUT_DIR = ".output/3.code_interpreter"
 
 # Create Azure AI Agent Service client
 project = AIProjectClient.from_connection_string(
-    conn_str=PROJECT_CONNECTION_STRING,
+    conn_str=AZURE_AI_AGENT_PROJECT_CONNECTION_STRING,
     credential=DefaultAzureCredential(),
 )
 
@@ -26,7 +26,7 @@ toolset.add(code_interpreter)
 
 # Create an agent
 agent = project.agents.create_agent(
-    model=OPENAI_CHAT_DEPLOY_NAME,
+    model=AZURE_AI_AGENT_MODEL_DEPLOYMENT_NAME,
     name="code-interpreter-agent",
     instructions="""
 - Please respond to user inquiries.
