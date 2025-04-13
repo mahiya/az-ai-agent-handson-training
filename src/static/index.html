@@ -10,15 +10,101 @@
         rel="icon" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <link rel="stylesheet" href="style.css">
-    <title></title>
+    <title>AI Agent Chat Console</title>
 </head>
 
 <body>
-    <div id="app" v-cloak>{{message}}</div>
+
+    <div id="app" v-cloak>
+        <div class="row m-0 h-100">
+            <!-- Side Bar -->
+            <div class="sidebar col col-auto h-100 p-3 bg-dark text-light">
+                <!-- App Title -->
+                <h1 class="h5">
+                    <img src="images/mslogo.png" height="30px" />
+                    <span class="ms-1">AI Agent Chat Console</span>
+                </h1>
+                <hr>
+                <!-- Chat List -->
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item" v-for="(title, index) in talks.map(t => t.title)">
+                        <a href="#" class="nav-link text-white chat-link"
+                            v-bind:class="{'active': selectedTalkIndex == index}" @click="selectTalk(index)">
+                            <i class="bi bi-chat-left"></i>
+                            <span class="ps-2">{{title}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" v-if="talks.length < maxTalkCount">
+                        <a href="#" class="nav-link text-white" @click="addTalk()">
+                            <i class="bi bi-plus-lg"></i>
+                            <span class="ps-2">Add New Chat</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="page col bg-light">
+
+                <!-- Chat Window -->
+                <div class="px-3 py-2" v-if="talks.length > 0">
+
+                    <!-- Chat Title and Delete Button -->
+                    <div class=" row mb-3">
+                        <div class="col">
+                            <input type="text" class="form-control chat-title"
+                                v-model="talks[selectedTalkIndex].title" />
+                        </div>
+                        <div class="col col-auto mt-2">
+                            <button class="btn btn-secondary" @click="deleteTalk(selectedTalkIndex)"
+                                v-bind:disabled="receiving">Delete Chat</button>
+                        </div>
+                    </div>
+
+                    <!-- Messages -->
+                    <div class="messages row mb-2" v-for="message in talks[selectedTalkIndex].messages">
+                        <div class="col col-auto ps-2 pe-0">
+                            <img v-if="message.role == 'assistant'" class="icon-user" src="images/assistant.svg" />
+                            <img v-if="message.role == 'user'" class="icon-user" src="images/user.jpg" />
+                        </div>
+                        <div class="col">
+                            <div class="message card">
+                                <vue-markdown class="message-content" v-bind:source="message.content"></vue-markdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Message Form -->
+                <div class="user-message p-3 w-100 bg-light border-top">
+                    <div class="row">
+                        <div class="col input-group pe-0">
+                            <span class="input-group-text">
+                                <i class="bi bi-send"></i>
+                            </span>
+                            <textarea class="form-control"
+                                placeholder="Enter your message and press the Enter key to send." v-model="userMessage"
+                                @keydown.enter.exact="sendUserMessage" v-bind:disabled="receiving"
+                                v-bind:rows="textAreaRows"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Processing -->
+        <div class="processing" v-if="processing">
+            <div class="spinner-border text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-markdown/2.2.4/vue-markdown.min.js"></script>
     <script src="script.js"></script>
 </body>
 
