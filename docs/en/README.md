@@ -1,4 +1,24 @@
-# Documentation for Azure AI Agent Development Hands-on Training
+# Azure AI Agent Development Hands-on Training
+
+## Architecture Diagram Achieved in This Hands-on Training
+![Architecture Diagram Achieved in This Hands-on Training](images/architecture.png)
+
+## What You Will Learn in This Hands-on Training
+1. Deployment of the following Azure resources on the Azure Portal
+  - Azure Storage
+  - Azure AI Search
+  - Azure AI Foundry (AI Hub / AI Project)
+2. Index creation in Azure AI Search
+  - Index creation in Pull mode using data sources, skill sets, and indexers
+  - Implementation of PDF file processing for RAG using document analysis skills, chunk splitting skills, and text embedding skills
+  - Specific methods for defining indexes and skill sets
+  - How to use debug sessions
+3. Development of AI agents using Azure AI Agent Service
+  - Using AI Agent Service from a Python program (AI Search tool, Code Interpreter tool)
+  - Development of a web application that interacts with the AI agent
+  - Deployment of the web application to Azure Web App
+
+## Hands-on Training Documents
 
 | Document | Training Part | Content |
 |--|--|--|
@@ -8,3 +28,6 @@
 | [4.develop-agent.md](4.develop-agent.md) | 4. Development of AI Agent with Azure AI Agent Service | Develop an AI agent using the AI Agent Service. Implement a Python program for basic processing and streaming output. Then, implement a web application and deploy it to Azure Web Apps. |
 | [5.extra-trainings.md](5.extra-trainings.md) | 5. Additional Training | Content to be done if time permits. Develop a multi-agent system using the Semantic Kernel Agent Framework. |
 | [6.clean-up.md](6.clean-up.md) | 6. Cleanup | Delete the Azure resources created this time. If you are using GitHub Codespaces, delete the Codespace used this time as well. |
+
+## Using This Repository with GitHub Codespaces
+[Launch GitHub Codespaces](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=959139172&skip_quickstart=true&ref=main)

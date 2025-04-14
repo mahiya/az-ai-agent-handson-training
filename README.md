@@ -1,5 +1,8 @@
 # Azure AI Agent 開発ハンズオントレーニング
 
+## 本ハンズオントレーニングで実現する構成図
+![本ハンズオントレーニングで実現する構成図](docs/jp/images/architecture.png)
+
 ## 本ハンズオントレーニングで学ぶことができること
 1. Azure Portal で以下の Azure リソースのデプロイ
   - Azure Storage
