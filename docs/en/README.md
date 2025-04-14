@@ -4,16 +4,17 @@
 ![Architecture Diagram Achieved in This Hands-on Training](images/architecture.png)
 
 ## What You Will Learn in This Hands-on Training
-1. Deployment of the following Azure resources on the Azure Portal
+
+- Deployment of the following Azure resources on the Azure Portal
   - Azure Storage
   - Azure AI Search
   - Azure AI Foundry (AI Hub / AI Project)
-2. Index creation in Azure AI Search
+- Index creation in Azure AI Search
   - Index creation in Pull mode using data sources, skill sets, and indexers
   - Implementation of PDF file processing for RAG using document analysis skills, chunk splitting skills, and text embedding skills
   - Specific methods for defining indexes and skill sets
   - How to use debug sessions
-3. Development of AI agents using Azure AI Agent Service
+- Development of AI agents using Azure AI Agent Service
   - Using AI Agent Service from a Python program (AI Search tool, Code Interpreter tool)
   - Development of a web application that interacts with the AI agent
   - Deployment of the web application to Azure Web App
