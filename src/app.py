@@ -243,5 +243,4 @@ def get_user_info() -> tuple[str, str]:
 
 
 if __name__ == "__main__":
-    # app.run(port=22222, debug=True)
     app.run()
