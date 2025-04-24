@@ -1,5 +1,7 @@
 # Azure AI Agent 開発ハンズオントレーニング
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=959139172&skip_quickstart=true&ref=main)
+
 ## 本ハンズオントレーニングで実現する構成図
 ![本ハンズオントレーニングで実現する構成図](docs/jp/images/architecture.png)
 
@@ -18,5 +20,3 @@
   - AI エージェントと対話する Web アプリの開発
   - Web アプリの Azure Web App へのデプロイ
 
-## GitHub Codespaces でこのレポジトリを使用する
-[GitHub Codespaces を起動](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=959139172&skip_quickstart=true&ref=main)
